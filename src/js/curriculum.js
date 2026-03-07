@@ -204,7 +204,11 @@ const Curriculum = {
   },
 
   renderExtras(mod) {
-    if (!mod.extras || (!mod.extras.links.length && !mod.extras.whyItMatters)) {
+    const links = (mod.extras && mod.extras.links) || [];
+    const visuals = (mod.extras && mod.extras.visuals) || [];
+    const whyItMatters = mod.extras && mod.extras.whyItMatters;
+
+    if (!mod.extras || (!links.length && !whyItMatters)) {
       this.extrasEl.innerHTML = `
         <div class="extras-section__label">Extras</div>
         <p class="extras-section__placeholder">Extras coming soon.</p>
@@ -212,11 +216,11 @@ const Curriculum = {
       return;
     }
 
-    const linksHtml = mod.extras.links.map(link =>
+    const linksHtml = links.map(link =>
       `<a href="${link.url}" target="_blank" rel="noopener noreferrer" class="extras-link">${link.text}</a>`
     ).join('');
 
-    const visualsHtml = mod.extras.visuals.map(v =>
+    const visualsHtml = visuals.map(v =>
       `<div class="extras-visual">${v}</div>`
     ).join('');
 
@@ -224,7 +228,7 @@ const Curriculum = {
       <div class="extras-section__label">Extras</div>
       ${visualsHtml ? `<div class="extras-visuals">${visualsHtml}</div>` : ''}
       ${linksHtml ? `<div class="extras-links"><div class="extras-links__label">References</div>${linksHtml}</div>` : ''}
-      ${mod.extras.whyItMatters ? `<div class="extras-why"><div class="extras-why__label">Why this matters</div><p>${mod.extras.whyItMatters}</p></div>` : ''}
+      ${whyItMatters ? `<div class="extras-why"><div class="extras-why__label">Why this matters</div><p>${whyItMatters}</p></div>` : ''}
     `;
   }
 };

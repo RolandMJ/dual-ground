@@ -211,3 +211,33 @@ and deeper shadow, Finish button fills green on hover when ready.
 **Issues:** None
 **Workaround / Solution:** N/A
 **Next:** Stage 7 — full test pass, bug fixes, pitch script
+
+---
+
+## 2026-03-07 — Stage 7: Test Pass, Bug Fixes, Pitch Script
+
+**Stage:** Stage 7
+**Status:** completed
+
+Ran a full code review across all JS, HTML, and CSS files. Found and fixed 6 issues:
+
+1. **CRITICAL — renderExtras null access:** `extras.links` and `extras.visuals` could throw
+   TypeError if missing. Added safe fallback with default empty arrays.
+2. **CRITICAL — typo "dualgound":** Fixed to "dualground" in archetype card download text.
+3. **IMPORTANT — empty block detection:** Output panels now check for actual content in blocks
+   rather than relying on `getRawText()` which returns placeholder text for empty blocks.
+4. **IMPORTANT — clipboard error handling:** Added `.catch()` to all `navigator.clipboard`
+   calls so users get "Copy failed" feedback if clipboard access is denied.
+5. **IMPORTANT — hardcoded display style:** Replaced `style.display` manipulation with CSS
+   class toggle (`app--hidden`) for showing/hiding the main layout.
+6. **NOTED — module unlock on attempt:** Quiz completion triggers block unlock regardless of
+   score. Kept as-is — this is a deliberate design choice (completion = engagement, not
+   perfection). The explanations teach on wrong answers anyway.
+
+Wrote pitch script at docs/PITCH.md — a 2-3 minute live demo walkthrough covering the
+problem, the solution, the flow (with demo cues), the three outputs, and key Q&A talking
+points. Written in Roland's voice, focused on practical outcomes not features.
+
+**Issues:** All found issues resolved
+**Workaround / Solution:** See fixes above
+**Next:** Stage 8 — buffer, pitch video, final push

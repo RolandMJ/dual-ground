@@ -205,6 +205,8 @@ const PromptForge = {
       if (!text) return;
       navigator.clipboard.writeText(text).then(() => {
         this.flashButton('prompt-copy-btn', 'Copied!');
+      }).catch(() => {
+        this.flashButton('prompt-copy-btn', 'Copy failed');
       });
     });
 

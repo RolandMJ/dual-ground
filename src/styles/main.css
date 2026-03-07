@@ -252,6 +252,10 @@ label,
   min-height: calc(100vh - var(--topbar-height));
 }
 
+.app--hidden {
+  display: none !important;
+}
+
 .panel {
   flex: 1;
   padding: var(--space-xl) var(--panel-padding);

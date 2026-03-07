@@ -197,6 +197,8 @@ const SkillForge = {
       if (!text) return;
       navigator.clipboard.writeText(text).then(() => {
         this.flashButton('skill-copy-btn', 'Copied!');
+      }).catch(() => {
+        this.flashButton('skill-copy-btn', 'Copy failed');
       });
     });
 

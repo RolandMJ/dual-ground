@@ -173,3 +173,41 @@ mobile), and consistent dark theme styling.
 **Issues:** None
 **Workaround / Solution:** N/A
 **Next:** Stage 6 — visual polish, animations, and responsive refinement
+
+---
+
+## 2026-03-07 — Stage 6: Visual Polish
+
+**Stage:** Stage 6
+**Status:** completed
+
+Comprehensive visual polish pass across the entire app. Added custom easing curves (ease-out
+and ease-bounce) as CSS variables for consistent motion. Key animation additions:
+
+- Module content fade-in on navigation with staggered delays for callout, quiz, and extras
+- Block cards slide in from left when added
+- Quiz correct answers pulse, wrong answers shake
+- Quiz feedback slides down into view
+- Block unlock animation now uses bounce easing
+- Output screen panels stagger-animate upward on reveal
+- Output panels lift on hover with shadow depth
+- Buttons shift up slightly on hover with active press state
+- Add-block buttons bounce on unlock and compress on click
+- Dragged block cards rotate slightly for physical feel
+
+Progress indicators added: 6 dots in the topbar next to the module counter. Active module
+gets an accent-blue glow. Completed modules turn green with a scale-bounce animation on
+completion. Dots hidden on mobile to save space.
+
+Responsive improvements: added tablet breakpoint (769-1024px) for output panels (2-column
+with centered third card), adjusted font sizes and button sizing for narrow screens, ensured
+add-button rows wrap gracefully with smaller gap/padding on mobile.
+
+Other polish: backdrop blur on topbar, deepened preview pane background, module subtitle now
+has a decorative accent line, extras "Why this matters" section gets a card background,
+reference links use arrow prefix and slide on hover, toast notification has checkmark icon
+and deeper shadow, Finish button fills green on hover when ready.
+
+**Issues:** None
+**Workaround / Solution:** N/A
+**Next:** Stage 7 — full test pass, bug fixes, pitch script

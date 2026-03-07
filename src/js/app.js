@@ -43,6 +43,9 @@ const App = {
     PromptForge.onUnlock(newPrompt);
     SkillForge.onUnlock(newSkill);
 
+    // Update progress dot
+    Curriculum.markDotCompleted(moduleId);
+
     // Show unlock toast
     const allNames = [...newPrompt, ...newSkill]
       .map(id => id.charAt(0).toUpperCase() + id.slice(1));

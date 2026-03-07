@@ -43,6 +43,9 @@ const Curriculum = {
     document.getElementById('nav-prev').disabled = id <= 1;
     document.getElementById('nav-next').disabled = id >= MODULES.length;
 
+    // Update progress dots
+    this.updateProgressDots(id);
+
     // Render sections
     this.renderTitle(mod);
     this.renderContent(mod);
@@ -175,6 +178,29 @@ const Curriculum = {
 
     // Re-render quiz to show feedback
     this.renderQuiz(mod);
+  },
+
+  updateProgressDots(activeId) {
+    document.querySelectorAll('.progress-dot').forEach(dot => {
+      const modId = parseInt(dot.dataset.module);
+      dot.classList.remove('progress-dot--active');
+      dot.classList.remove('progress-dot--completed');
+      dot.classList.remove('progress-dot--just-completed');
+
+      if (modId === activeId) {
+        dot.classList.add('progress-dot--active');
+      }
+      if (App.state.completedModules.includes(modId)) {
+        dot.classList.add('progress-dot--completed');
+      }
+    });
+  },
+
+  markDotCompleted(moduleId) {
+    const dot = document.querySelector(`.progress-dot[data-module="${moduleId}"]`);
+    if (dot) {
+      dot.classList.add('progress-dot--completed', 'progress-dot--just-completed');
+    }
   },
 
   renderExtras(mod) {

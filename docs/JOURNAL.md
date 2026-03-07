@@ -43,3 +43,22 @@ console errors.
 **Issues:** None
 **Workaround / Solution:** N/A
 **Next:** Stage 2 — block builder shell with all blocks interactive and live preview
+
+---
+
+## 2026-03-07 — Visual Overhaul: Dark Theme
+
+**Stage:** Stage 1 (polish)
+**Status:** completed
+
+Reworked the entire colour system from a sterile light theme to a dark, engaging design. Key
+changes: dark surfaces (#0e1117 base), vibrant block colours bumped up for contrast against
+dark backgrounds, gradient logo text, pill-shaped buttons and progress badge, coloured dot
+indicators on build zone headers, glowing hover states on the block drop areas, subtle gradient
+accent line on the quiz area, styled scrollbars, and more visual hierarchy through brightness
+levels rather than weight alone. The aesthetic now feels alive without being flashy — dark mode
+that's warm and inviting rather than cold.
+
+**Issues:** None
+**Workaround / Solution:** N/A
+**Next:** Stage 2 — block builder shell with all blocks interactive and live preview

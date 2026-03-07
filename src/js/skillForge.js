@@ -184,10 +184,11 @@ const SkillForge = {
   },
 
   getMarkdown() {
-    return this.blocks.map(b => {
+    const filled = this.blocks.filter(b => b.content && b.content.trim());
+    if (!filled.length) return '';
+    return filled.map(b => {
       const heading = `## ${b.label}`;
-      const content = b.content || '...';
-      return `${heading}\n${content}`;
+      return `${heading}\n${b.content}`;
     }).join('\n\n');
   },
 

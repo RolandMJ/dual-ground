@@ -194,8 +194,10 @@ const PromptForge = {
   },
 
   getRawText() {
-    return this.blocks.map(b =>
-      `[${b.label}]\n${b.content || '...'}`
+    const filled = this.blocks.filter(b => b.content && b.content.trim());
+    if (!filled.length) return '';
+    return filled.map(b =>
+      `[${b.label}]\n${b.content}`
     ).join('\n\n');
   },
 

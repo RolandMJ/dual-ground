@@ -23,11 +23,13 @@ const Output = {
     this.render();
     this.screen.classList.add('output-screen--visible');
     document.querySelector('.app').classList.add('app--hidden');
+    document.querySelector('.topbar__finish').style.display = 'none';
   },
 
   hide() {
     this.screen.classList.remove('output-screen--visible');
     document.querySelector('.app').classList.remove('app--hidden');
+    document.querySelector('.topbar__finish').style.display = '';
   },
 
   render() {
@@ -45,8 +47,10 @@ const Output = {
 
     if (!PromptForge.blocks.length || !hasContent) {
       container.innerHTML = '<p class="output-panel__empty">No prompt blocks were filled in. Go back and add some content to your blocks.</p>';
+      document.getElementById('output-prompt-copy').disabled = true;
       return;
     }
+    document.getElementById('output-prompt-copy').disabled = false;
 
     // Render styled blocks
     container.innerHTML = PromptForge.blocks.map(b => {
@@ -64,8 +68,10 @@ const Output = {
 
     if (!SkillForge.blocks.length || !hasContent) {
       container.innerHTML = '<p class="output-panel__empty">No skill blocks were filled in. Go back and build your SKILL.md.</p>';
+      document.getElementById('output-skill-download').disabled = true;
       return;
     }
+    document.getElementById('output-skill-download').disabled = false;
 
     container.innerHTML = SkillForge.blocks.map(b => {
       const content = this.escapeHtml(b.content) || '<em class="output-panel__empty-line">empty</em>';

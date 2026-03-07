@@ -241,3 +241,28 @@ points. Written in Roland's voice, focused on practical outcomes not features.
 **Issues:** All found issues resolved
 **Workaround / Solution:** See fixes above
 **Next:** Stage 8 — buffer, pitch video, final push
+
+---
+
+## 2026-03-07 — Post-Stage 7: Full Plausibility Audit
+
+**Stage:** Post-build audit
+**Status:** completed
+
+Ran a comprehensive plausibility and function audit across all HTML, CSS, and JS files. Verified
+all DOM IDs, CSS class references, cross-zone drag isolation, quiz-to-unlock flow, archetype
+scoring edge cases, responsive breakpoints, and clipboard error handling. Found 3 issues:
+
+1. **BUG — Empty blocks in exports:** `getRawText()` and `getMarkdown()` included all blocks
+   regardless of content, using "..." as placeholder for empty ones. Fixed by filtering to only
+   blocks with actual content. Both functions now return empty string when no filled blocks exist.
+2. **BUG — Output export buttons active on empty content:** Copy Prompt and Download SKILL.md
+   buttons on the output screen were clickable even when the panel showed "no content" message.
+   Fixed by disabling buttons when `hasContent` is false, re-enabling when content exists.
+3. **UX — Finish button visible on output screen:** The "Finish & Reveal" button remained visible
+   and clickable on the output screen (clicking just re-rendered, harmless but confusing). Fixed
+   by hiding it when output screen shows and restoring it on "Back to Builder".
+
+**Issues:** All 3 resolved
+**Workaround / Solution:** See fixes above
+**Next:** Stage 8 — buffer, pitch video, final push

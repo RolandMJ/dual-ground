@@ -143,3 +143,33 @@ onModuleComplete method that coordinates between Curriculum, PromptForge, and Sk
 **Issues:** None
 **Workaround / Solution:** N/A
 **Next:** Stage 5 — output screen with archetype scoring and exports
+
+---
+
+## 2026-03-07 — Stage 5: Output Screen
+
+**Stage:** Stage 5
+**Status:** completed
+
+Built the output screen that appears when the user clicks "Finish & Reveal". It replaces the
+main split-screen view with a three-panel grid showing the user's results.
+
+Panel 1 shows the assembled prompt with styled block sections and a "Copy Prompt" button.
+Panel 2 shows the SKILL.md content with a "Download SKILL.md" button. Panel 3 shows the
+user's AI personality archetype — scored based on which prompt block types they used most.
+
+Five archetypes defined: The Architect (structure-focused), The Explorer (example/chain-focused),
+The Guardian (safety/memory-focused), The Pragmatist (lean task/context-focused), and The
+Craftsperson (balanced across all types). Each has a title, tagline, description, and a
+4-tip playbook with personalised advice.
+
+Scoring logic in archetypes.js uses weighted block type counts. Special case: if user used 5+
+types evenly, they're classified as Craftsperson. Playbook tips in playbook.js are specific
+and actionable per archetype. Card can be downloaded as a text file.
+
+Output screen has a "Back to Builder" button, gradient title, responsive grid (stacks on
+mobile), and consistent dark theme styling.
+
+**Issues:** None
+**Workaround / Solution:** N/A
+**Next:** Stage 6 — visual polish, animations, and responsive refinement

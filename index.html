@@ -109,6 +109,57 @@
 
   </main>
 
+  <!-- Output Screen (hidden by default) -->
+  <section class="output-screen" id="output-screen">
+
+    <div class="output-header">
+      <button class="btn" id="output-back-btn">Back to Builder</button>
+      <h1 class="output-header__title">Your Results</h1>
+      <p class="output-header__subtitle">Two paths. One session. Three real outputs.</p>
+    </div>
+
+    <div class="output-panels">
+
+      <!-- Panel 1: Prompt -->
+      <div class="output-panel">
+        <div class="output-panel__header">
+          <span class="output-panel__icon" style="background: var(--accent)"></span>
+          <h2 class="output-panel__title">Your Prompt</h2>
+        </div>
+        <div class="output-panel__body" id="output-prompt-content"></div>
+        <div class="output-panel__actions">
+          <button class="btn btn--primary" id="output-prompt-copy">Copy Prompt</button>
+        </div>
+      </div>
+
+      <!-- Panel 2: SKILL.md -->
+      <div class="output-panel">
+        <div class="output-panel__header">
+          <span class="output-panel__icon" style="background: var(--skill-block-1)"></span>
+          <h2 class="output-panel__title">Your SKILL.md</h2>
+        </div>
+        <div class="output-panel__body" id="output-skill-content"></div>
+        <div class="output-panel__actions">
+          <button class="btn btn--primary" id="output-skill-download">Download SKILL.md</button>
+        </div>
+      </div>
+
+      <!-- Panel 3: Archetype Card -->
+      <div class="output-panel output-panel--card">
+        <div class="output-panel__header">
+          <span class="output-panel__icon" style="background: var(--block-think)"></span>
+          <h2 class="output-panel__title">Your AI Personality</h2>
+        </div>
+        <div class="output-panel__body" id="output-archetype-card"></div>
+        <div class="output-panel__actions">
+          <button class="btn btn--primary" id="output-card-download">Download Card</button>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
   <!-- Scripts -->
   <script src="src/data/modules.js"></script>
   <script src="src/data/archetypes.js"></script>

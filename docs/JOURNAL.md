@@ -265,4 +265,26 @@ scoring edge cases, responsive breakpoints, and clipboard error handling. Found 
 
 **Issues:** All 3 resolved
 **Workaround / Solution:** See fixes above
-**Next:** Stage 8 — buffer, pitch video, final push
+**Next:** Stage 8 — final push
+
+---
+
+## 2026-03-07 — Stage 8: Final Push
+
+**Stage:** Stage 8
+**Status:** completed
+
+Created README.md for the GitHub repo — covers what the app does, the three outputs, how to
+run locally, tech stack, curriculum modules, and project structure. Written in plain language,
+no filler.
+
+Ran final deployment check: served the app locally, confirmed all files return 200. Verified
+all asset paths in index.html are relative (no absolute paths), so the app is immediately
+deployable to GitHub Pages or any static host with zero configuration.
+
+Full project build is complete across all 8 stages. Every stage is documented in this journal.
+All code is committed and pushed to GitHub.
+
+**Issues:** None
+**Workaround / Solution:** N/A
+**Next:** Record pitch video, deploy to GitHub Pages if desired

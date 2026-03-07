@@ -87,3 +87,33 @@ prompt.txt or SKILL.md. All JS parses cleanly. Design doc saved to docs/plans/.
 **Issues:** None
 **Workaround / Solution:** N/A
 **Next:** Stage 3 — curriculum content, all 6 modules written and rendered
+
+---
+
+## 2026-03-07 — Stage 3: Curriculum Content and Renderer
+
+**Stage:** Stage 3
+**Status:** completed
+
+Wrote all 6 modules of curriculum content in modules.js: (1) What Claude Actually Is,
+(2) Roles and Context, (3) Tasks and Constraints, (4) Examples and Formatting, (5) Thinking
+and Chaining, (6) Tools, Memory, and Safety. Each module has 4 content paragraphs, a Skills
+Connection callout, 3 quiz questions with correct/wrong explanations, and an Extras section
+with reference links to Anthropic docs and a "Why this matters" paragraph.
+
+Content is cross-checked against Anthropic's public documentation. Writing style follows
+CLAUDE.md guidelines — specific, plain language, no filler phrases, real examples. Quiz
+questions test understanding not memorisation, with plausible wrong answers and clear
+explanations.
+
+Built the full curriculum renderer in curriculum.js: module navigation (prev/next buttons),
+dynamic content rendering, interactive quiz with colour-coded feedback (green correct, red
+wrong), score summary when all 3 questions are answered, extras section with clickable
+reference links. Progress indicator in topbar updates with current module number.
+
+Added comprehensive CSS for quiz options, feedback messages, score summary, extras links,
+visual placeholders, and module navigation. All styles follow the dark theme.
+
+**Issues:** None
+**Workaround / Solution:** N/A
+**Next:** Stage 4 — unlock logic, quiz completion triggers block tier unlock

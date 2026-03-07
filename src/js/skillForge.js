@@ -11,6 +11,7 @@ const SkillForge = {
   blocks: [],
   styledView: true,
   dragState: null,
+  buttonEls: {},
 
   init() {
     this.container = document.getElementById('skill-blocks-container');
@@ -27,12 +28,33 @@ const SkillForge = {
   renderAddButtons() {
     this.BLOCK_TYPES.forEach(type => {
       const btn = document.createElement('button');
-      btn.className = 'add-block-btn add-block-btn--skill';
+      btn.className = 'add-block-btn add-block-btn--skill add-block-btn--locked';
       btn.dataset.type = type.id;
       btn.style.setProperty('--block-color', type.color);
-      btn.innerHTML = `<span class="add-block-btn__plus">+</span> ${type.label}`;
-      btn.addEventListener('click', () => this.addBlock(type));
+      btn.innerHTML = `<span class="add-block-btn__icon">&#x1F512;</span> ${type.label}`;
+      btn.disabled = true;
+      btn.addEventListener('click', () => {
+        if (!btn.disabled) this.addBlock(type);
+      });
       this.buttonsRow.appendChild(btn);
+      this.buttonEls[type.id] = btn;
+    });
+  },
+
+  onUnlock(blockIds) {
+    if (!blockIds.length) return;
+
+    blockIds.forEach(id => {
+      const btn = this.buttonEls[id];
+      if (!btn) return;
+      btn.disabled = false;
+      btn.classList.remove('add-block-btn--locked');
+      btn.classList.add('add-block-btn--unlocking');
+
+      const type = this.BLOCK_TYPES.find(t => t.id === id);
+      btn.innerHTML = `<span class="add-block-btn__plus">+</span> ${type.label}`;
+
+      setTimeout(() => btn.classList.remove('add-block-btn--unlocking'), 600);
     });
   },
 

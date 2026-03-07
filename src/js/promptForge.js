@@ -18,6 +18,7 @@ const PromptForge = {
   blocks: [],
   styledView: true,
   dragState: null,
+  buttonEls: {},
 
   init() {
     this.container = document.getElementById('prompt-blocks-container');
@@ -34,12 +35,34 @@ const PromptForge = {
   renderAddButtons() {
     this.BLOCK_TYPES.forEach(type => {
       const btn = document.createElement('button');
-      btn.className = 'add-block-btn';
+      btn.className = 'add-block-btn add-block-btn--locked';
       btn.dataset.type = type.id;
       btn.style.setProperty('--block-color', type.color);
-      btn.innerHTML = `<span class="add-block-btn__plus">+</span> ${type.label}`;
-      btn.addEventListener('click', () => this.addBlock(type));
+      btn.innerHTML = `<span class="add-block-btn__icon">&#x1F512;</span> ${type.label}`;
+      btn.disabled = true;
+      btn.addEventListener('click', () => {
+        if (!btn.disabled) this.addBlock(type);
+      });
       this.buttonsRow.appendChild(btn);
+      this.buttonEls[type.id] = btn;
+    });
+  },
+
+  onUnlock(blockIds) {
+    if (!blockIds.length) return;
+
+    blockIds.forEach(id => {
+      const btn = this.buttonEls[id];
+      if (!btn) return;
+      btn.disabled = false;
+      btn.classList.remove('add-block-btn--locked');
+      btn.classList.add('add-block-btn--unlocking');
+
+      const type = this.BLOCK_TYPES.find(t => t.id === id);
+      btn.innerHTML = `<span class="add-block-btn__plus">+</span> ${type.label}`;
+
+      // Remove animation class after it plays
+      setTimeout(() => btn.classList.remove('add-block-btn--unlocking'), 600);
     });
   },
 
@@ -129,7 +152,6 @@ const PromptForge = {
     const [dragged] = this.blocks.splice(dragIdx, 1);
     this.blocks.splice(targetIdx, 0, dragged);
 
-    // Re-render all cards
     this.container.innerHTML = '';
     this.blocks.forEach(b => this.renderBlock(b));
     this.updatePreview();

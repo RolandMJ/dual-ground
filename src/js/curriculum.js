@@ -167,12 +167,10 @@ const Curriculum = {
     this.quizState[moduleId].answered[questionIdx] = optionIdx;
     this.quizState[moduleId].correct[questionIdx] = isCorrect;
 
-    // Check if all questions in this module are answered
+    // Check if all questions in this module are answered — trigger unlock
     const state = this.quizState[moduleId];
     if (Object.keys(state.answered).length === mod.quiz.length) {
-      if (!App.state.completedModules.includes(moduleId)) {
-        App.state.completedModules.push(moduleId);
-      }
+      App.onModuleComplete(moduleId);
     }
 
     // Re-render quiz to show feedback

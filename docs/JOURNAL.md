@@ -117,3 +117,29 @@ visual placeholders, and module navigation. All styles follow the dark theme.
 **Issues:** None
 **Workaround / Solution:** N/A
 **Next:** Stage 4 — unlock logic, quiz completion triggers block tier unlock
+
+---
+
+## 2026-03-07 — Stage 4: Unlock Logic
+
+**Stage:** Stage 4
+**Status:** completed
+
+Implemented the full unlock system connecting quiz completion to block availability. All block
+add buttons now start in a locked state (greyed out with lock icon, disabled). When a user
+answers all 3 quiz questions in a module, the corresponding blocks unlock with a scale-up
+animation, the lock icon switches to a "+" sign, and a toast notification appears in the
+bottom-right showing which blocks were unlocked.
+
+Unlock mapping follows module topics: Module 1 (What Claude Is) unlocks Role + Context +
+Name; Module 2 (Roles and Context) unlocks Task + Constraint + Description; Module 3 unlocks
+Example + Prefill + Trigger; Module 4 unlocks Format + Think + Steps; Module 5 unlocks Chain +
+Tool + Notes; Module 6 unlocks Memory + Safety.
+
+The Finish button in the topbar enables with a pulsing green glow when all 6 modules are
+completed. State management centralised in App.js with the UNLOCK_MAP constant and
+onModuleComplete method that coordinates between Curriculum, PromptForge, and SkillForge.
+
+**Issues:** None
+**Workaround / Solution:** N/A
+**Next:** Stage 5 — output screen with archetype scoring and exports

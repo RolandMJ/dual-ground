@@ -62,3 +62,28 @@ that's warm and inviting rather than cold.
 **Issues:** None
 **Workaround / Solution:** N/A
 **Next:** Stage 2 — block builder shell with all blocks interactive and live preview
+
+---
+
+## 2026-03-07 — Stage 2: Block Builder Shell
+
+**Stage:** Stage 2
+**Status:** completed
+
+Built the full interactive block builder for both prompt and skill zones. The prompt zone has
+12 colour-coded add buttons (Role, Context, Task, Constraint, Example, Prefill, Think, Format,
+Chain, Tool, Memory, Safety). The skill zone has 5 amber-palette buttons (Name, Description,
+Trigger, Steps, Notes). Clicking any button adds a block card with an inline auto-resizing
+textarea, a drag handle for reordering, and a delete button that appears on hover.
+
+Blocks can be dragged and dropped to reorder within their zone. The live preview updates in
+real-time as blocks are added, edited, reordered, or removed. Preview has a styled/raw toggle
+— styled view shows colour-coded sections with labels, raw view shows plain text with
+[BlockType] markers (prompt) or markdown headings (skill).
+
+Copy buttons write to clipboard with a green flash confirmation. Export buttons download as
+prompt.txt or SKILL.md. All JS parses cleanly. Design doc saved to docs/plans/.
+
+**Issues:** None
+**Workaround / Solution:** N/A
+**Next:** Stage 3 — curriculum content, all 6 modules written and rendered

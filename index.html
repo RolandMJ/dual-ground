@@ -60,18 +60,21 @@
       <div class="build-zone">
         <h2 class="build-zone__header"><span class="build-zone__icon build-zone__icon--prompt"></span> Prompt Blocks</h2>
 
-        <div class="block-area">
-          <span class="block-area__placeholder">Complete Module 1 to unlock your first prompt blocks</span>
-        </div>
+        <div class="add-buttons-row" id="prompt-add-buttons"></div>
+
+        <div class="blocks-container" id="prompt-blocks-container"></div>
 
         <div class="preview-pane">
-          <div class="preview-pane__label">Live Preview</div>
-          <div class="preview-pane__content">Your assembled prompt will appear here as you add blocks...</div>
+          <div class="preview-pane__header">
+            <div class="preview-pane__label">Live Preview</div>
+            <button class="preview-pane__toggle" id="prompt-preview-toggle">Raw</button>
+          </div>
+          <div class="preview-pane__content" id="prompt-preview-content"></div>
         </div>
 
         <div class="actions">
-          <button class="btn" disabled>Copy Prompt</button>
-          <button class="btn" disabled>Export</button>
+          <button class="btn" id="prompt-copy-btn">Copy Prompt</button>
+          <button class="btn" id="prompt-export-btn">Export</button>
         </div>
       </div>
 
@@ -79,18 +82,21 @@
       <div class="build-zone">
         <h2 class="build-zone__header"><span class="build-zone__icon build-zone__icon--skill"></span> Skill Blocks</h2>
 
-        <div class="block-area">
-          <span class="block-area__placeholder">Complete Module 1 to unlock your first skill blocks</span>
-        </div>
+        <div class="add-buttons-row" id="skill-add-buttons"></div>
+
+        <div class="blocks-container" id="skill-blocks-container"></div>
 
         <div class="preview-pane">
-          <div class="preview-pane__label">Live Preview</div>
-          <div class="preview-pane__content">Your SKILL.md file will preview here as you build it...</div>
+          <div class="preview-pane__header">
+            <div class="preview-pane__label">Live Preview</div>
+            <button class="preview-pane__toggle" id="skill-preview-toggle">Raw</button>
+          </div>
+          <div class="preview-pane__content" id="skill-preview-content"></div>
         </div>
 
         <div class="actions">
-          <button class="btn" disabled>Copy SKILL.md</button>
-          <button class="btn" disabled>Download</button>
+          <button class="btn" id="skill-copy-btn">Copy SKILL.md</button>
+          <button class="btn" id="skill-export-btn">Download</button>
         </div>
       </div>
 

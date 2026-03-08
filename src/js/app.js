@@ -39,6 +39,9 @@ const App = {
     this.restoreUnlocks();
     this.updateFinishButton();
     this.initPopoverToggles();
+
+    // Ensure scroll is at top after all content is rendered
+    window.scrollTo(0, 0);
   },
 
   initIntro() {
@@ -290,4 +293,9 @@ if ('scrollRestoration' in history) {
 document.addEventListener('DOMContentLoaded', () => {
   window.scrollTo(0, 0);
   App.init();
+});
+
+// Some browsers restore scroll after DOMContentLoaded — catch it on load too
+window.addEventListener('load', () => {
+  window.scrollTo(0, 0);
 });

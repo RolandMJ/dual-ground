@@ -171,9 +171,9 @@ const Curriculum = {
 
     // Bind click events for unanswered questions
     this.quizEl.querySelectorAll('.quiz-option:not(.quiz-option--disabled)').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const qIdx = parseInt(e.target.dataset.question);
-        const oIdx = parseInt(e.target.dataset.option);
+      btn.addEventListener('click', () => {
+        const qIdx = parseInt(btn.dataset.question);
+        const oIdx = parseInt(btn.dataset.option);
         this.answerQuestion(mod.id, qIdx, oIdx);
       });
     });

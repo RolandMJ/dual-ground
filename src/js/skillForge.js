@@ -148,7 +148,18 @@ const SkillForge = {
     this.blocks.splice(targetIdx, 0, dragged);
 
     this.container.innerHTML = '';
-    this.blocks.forEach(b => this.renderBlock(b));
+    this.blocks.forEach(b => {
+      this.renderBlock(b);
+      // Restore textarea content after re-render
+      const card = this.container.lastElementChild;
+      if (card && b.content) {
+        const textarea = card.querySelector('.block-card__input');
+        if (textarea) {
+          textarea.value = b.content;
+          this.autoResize(textarea);
+        }
+      }
+    });
     this.updatePreview();
     App.state.skillBlocks = this.blocks;
     App.saveState();

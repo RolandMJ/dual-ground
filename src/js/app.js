@@ -57,12 +57,15 @@ const App = {
     if (reviewGuide) reviewGuide.style.display = 'none';
     if (terminalSection) terminalSection.style.display = 'none';
 
+    const footer = document.getElementById('site-footer');
+
     const showApp = () => {
       introScreen.classList.add('intro--hidden');
       topbar.classList.remove('topbar--hidden');
       app.classList.remove('app--hidden');
       if (reviewGuide) reviewGuide.style.display = '';
       if (terminalSection) terminalSection.style.display = '';
+      if (footer) footer.style.display = '';
       window.scrollTo(0, 0);
     };
 
@@ -72,6 +75,7 @@ const App = {
       app.classList.add('app--hidden');
       if (reviewGuide) reviewGuide.style.display = 'none';
       if (terminalSection) terminalSection.style.display = 'none';
+      if (footer) footer.style.display = 'none';
       // Hide output screen if visible
       const outputScreen = document.getElementById('output-screen');
       if (outputScreen) outputScreen.classList.remove('output-screen--visible');

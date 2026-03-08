@@ -753,6 +753,53 @@ label,
   box-shadow: 0 2px 14px rgba(205, 164, 84, 0.25);
 }
 
+.sample-guide__trigger--terminal {
+  border-color: #28c840;
+  background: rgba(40, 200, 64, 0.08);
+  color: #28c840;
+}
+
+.sample-guide__trigger--terminal:hover,
+.sample-guide--open .sample-guide__trigger--terminal {
+  background: #28c840;
+  color: var(--bg-primary);
+  box-shadow: 0 2px 14px rgba(40, 200, 64, 0.25);
+}
+
+.sample-guide__popover--wide {
+  width: min(92vw, 840px);
+}
+
+/* Cheat sheet command rows */
+.cheatsheet-cmd {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: baseline;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.cheatsheet-cmd:last-child {
+  border-bottom: none;
+}
+
+.cheatsheet-cmd code {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.8rem;
+  color: var(--text-bright);
+  background: rgba(0, 0, 0, 0.25);
+  padding: 2px 7px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.cheatsheet-cmd span {
+  color: var(--text-secondary);
+}
+
 .sample-guide__popover {
   display: none;
   position: fixed;
@@ -2104,6 +2151,37 @@ label,
   line-height: 1.6;
 }
 
+/* Command preview banner — shows the exact command before the terminal */
+.tg-command-preview {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 10px 14px;
+  margin-bottom: var(--space-sm);
+  background: rgba(217, 119, 87, 0.08);
+  border: 1px solid rgba(217, 119, 87, 0.25);
+  border-radius: var(--radius-md);
+}
+
+.tg-command-preview__label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.tg-command-preview__code {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.85rem;
+  color: var(--text-bright);
+  background: rgba(0, 0, 0, 0.2);
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  word-break: break-all;
+}
+
 /* Terminal window */
 .tg-terminal {
   background: var(--bg-terminal);
@@ -2243,6 +2321,8 @@ label,
   color: var(--bg-terminal);
   border-color: #28c840;
   font-weight: 700;
+  padding: 10px 28px;
+  font-size: 0.9rem;
 }
 
 .tg-btn--run:not(:disabled):hover {

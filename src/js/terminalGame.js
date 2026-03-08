@@ -327,7 +327,7 @@ const TerminalGame = {
       <div class="tg-header">
         <div class="tg-header__left">
           <div class="tg-header__title">Terminal Hero</div>
-          <div class="tg-header__subtitle">Master Claude Code — one command at a time</div>
+          <div class="tg-header__subtitle">See what real commands do — just press Run</div>
         </div>
         <div class="tg-header__right">
           <div class="tg-rank" title="Your terminal rank">
@@ -357,8 +357,13 @@ const TerminalGame = {
     `;
   },
 
+  escapeAttr(str) {
+    return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  },
+
   renderChallenge(c) {
     const isDone = this.completedChallenges.includes(c.id);
+    const escapedCmd = this.escapeAttr(c.command);
     return `
       <div class="tg-challenge">
         <div class="tg-challenge__header">
@@ -369,18 +374,23 @@ const TerminalGame = {
         <p class="tg-challenge__brief">${c.brief}</p>
       </div>
 
+      <div class="tg-command-preview">
+        <span class="tg-command-preview__label">Command to try:</span>
+        <code class="tg-command-preview__code">${escapedCmd}</code>
+      </div>
+
       <div class="tg-terminal">
         <div class="tg-terminal__bar">
           <span class="tg-terminal__dot tg-terminal__dot--red"></span>
           <span class="tg-terminal__dot tg-terminal__dot--yellow"></span>
           <span class="tg-terminal__dot tg-terminal__dot--green"></span>
-          <span class="tg-terminal__title-bar">~/my-project</span>
+          <span class="tg-terminal__title-bar">~/my-project — simulator</span>
         </div>
         <div class="tg-terminal__body" id="tg-output">
           <div class="tg-terminal__line tg-terminal__line--prompt">
             <span class="tg-prompt-symbol">$</span>
             <input type="text" class="tg-input" id="tg-input"
-              placeholder="Type command here..."
+              value="${escapedCmd}"
               autocomplete="off" spellcheck="false"
               ${this.isAnimating ? 'disabled' : ''}>
           </div>
@@ -388,13 +398,12 @@ const TerminalGame = {
       </div>
 
       <div class="tg-actions">
-        <button class="tg-btn tg-btn--run" id="tg-run" ${this.isAnimating ? 'disabled' : ''}>Run</button>
-        <button class="tg-btn tg-btn--hint" id="tg-hint">Hint</button>
-        <button class="tg-btn tg-btn--type-for-me" id="tg-auto">Type it for me</button>
+        <button class="tg-btn tg-btn--run" id="tg-run" ${this.isAnimating ? 'disabled' : ''}>Run Command</button>
+        <button class="tg-btn tg-btn--hint" id="tg-hint">Why this command?</button>
       </div>
 
       <div class="tg-hint-box" id="tg-hint-box" style="display:none">
-        <span class="tg-hint-box__label">Hint:</span> ${c.hint}
+        <span class="tg-hint-box__label">Why:</span> ${c.hint}
       </div>
 
       <div class="tg-explanation" id="tg-explanation" style="display:none"></div>
@@ -419,7 +428,6 @@ const TerminalGame = {
 
       if (btn.id === 'tg-run') this.runCommand();
       else if (btn.id === 'tg-hint') this.showHint();
-      else if (btn.id === 'tg-auto') this.autoType();
       else if (btn.id === 'tg-prev') this.navigate(-1);
       else if (btn.id === 'tg-next') this.navigate(1);
       else if (btn.id === 'tg-replay') this.replay();
@@ -501,6 +509,13 @@ const TerminalGame = {
     if (!input) return;
     const value = input.value.trim().toLowerCase();
 
+    // If empty, fill in the command and run
+    if (!value) {
+      input.value = challenge.command;
+      this.animateOutput(challenge);
+      return;
+    }
+
     // Normalize: collapse whitespace, strip leading $ or >
     const norm = value.replace(/^[$>]\s*/, '').replace(/\s+/g, ' ').trim();
 
@@ -510,14 +525,9 @@ const TerminalGame = {
       return norm === aNorm;
     });
 
-    if (!accepted && value.length > 0) {
+    if (!accepted) {
       this.showWrongCommand(value, challenge);
       return;
-    }
-
-    if (!value) {
-      // If empty, auto-fill the command
-      input.value = challenge.command;
     }
 
     this.animateOutput(challenge);
@@ -525,15 +535,17 @@ const TerminalGame = {
 
   showWrongCommand(typed, challenge) {
     const output = document.getElementById('tg-output');
+    const input = document.getElementById('tg-input');
+
+    // Clear the wrong input and pre-fill the correct command
     const line = document.createElement('div');
-    line.className = 'tg-terminal__line tg-terminal__line--error';
-    line.textContent = `  Not quite — for this challenge, type: ${challenge.command}`;
+    line.className = 'tg-terminal__line tg-terminal__line--muted';
+    line.textContent = `  No worries — the command for this challenge is already filled in above. Just press Run.`;
     output.appendChild(line);
-    const hint = document.createElement('div');
-    hint.className = 'tg-terminal__line tg-terminal__line--muted';
-    hint.textContent = '  Or click "Type it for me" below to have it entered automatically.';
-    output.appendChild(hint);
     output.scrollTop = output.scrollHeight;
+
+    // Re-fill the correct command so they can just press Run
+    if (input) input.value = challenge.command;
   },
 
   animateOutput(challenge) {

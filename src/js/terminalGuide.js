@@ -181,9 +181,9 @@ const TerminalGuide = {
     this.guideEl.innerHTML = `
       <div class="guide-header">
         <div class="guide-header__left">
-          <div class="guide-header__badge">Step-by-Step Project</div>
+          <div class="guide-header__badge">Real Project Walkthrough</div>
           <div class="guide-header__title">Build an Emoji Puzzle Game</div>
-          <div class="guide-header__subtitle">Follow along — type each prompt into Claude Code and watch your game come to life</div>
+          <div class="guide-header__subtitle">These prompts are for a real Claude Code session in your own terminal — not the simulator on the left</div>
         </div>
         <div class="guide-header__progress">
           <div class="guide-pips">
@@ -219,7 +219,7 @@ const TerminalGuide = {
         <p class="guide-step__instruction">${step.instruction}</p>
 
         <div class="guide-prompt-box">
-          <div class="guide-prompt-box__label">Type this into Claude Code:</div>
+          <div class="guide-prompt-box__label">Copy this into your real terminal (not the simulator):</div>
           <div class="guide-prompt-box__content" id="guide-prompt-text">${step.prompt}</div>
           <button class="guide-prompt-box__copy" id="guide-copy-btn" title="Copy to clipboard">Copy</button>
           ${step.promptExplain ? `<div class="guide-prompt-box__explain">${step.promptExplain}</div>` : ''}

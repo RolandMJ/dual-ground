@@ -50,30 +50,41 @@ const App = {
     const app = document.querySelector('.app');
     const reviewGuide = document.getElementById('review-guide');
     const startBtn = document.getElementById('intro-start-btn');
-
     const terminalSection = document.getElementById('terminal-section');
+    const logo = document.querySelector('.topbar__logo');
 
-    // If user has saved progress, skip intro entirely
-    if (this.state.completedModules.length > 0 || this._savedPromptBlocks?.length > 0 || this._savedSkillBlocks?.length > 0) {
-      introScreen.classList.add('intro--hidden');
-      topbar.classList.remove('topbar--hidden');
-      app.classList.remove('app--hidden');
-      if (reviewGuide) reviewGuide.style.display = '';
-      if (terminalSection) terminalSection.style.display = '';
-      return;
-    }
-
-    // Hide review guide and terminal game during intro
+    // Always show intro on page load — hide the rest
     if (reviewGuide) reviewGuide.style.display = 'none';
     if (terminalSection) terminalSection.style.display = 'none';
 
-    startBtn.addEventListener('click', () => {
+    const showApp = () => {
       introScreen.classList.add('intro--hidden');
       topbar.classList.remove('topbar--hidden');
       app.classList.remove('app--hidden');
       if (reviewGuide) reviewGuide.style.display = '';
       if (terminalSection) terminalSection.style.display = '';
-    });
+      window.scrollTo(0, 0);
+    };
+
+    const showIntro = () => {
+      introScreen.classList.remove('intro--hidden');
+      topbar.classList.add('topbar--hidden');
+      app.classList.add('app--hidden');
+      if (reviewGuide) reviewGuide.style.display = 'none';
+      if (terminalSection) terminalSection.style.display = 'none';
+      // Hide output screen if visible
+      const outputScreen = document.getElementById('output-screen');
+      if (outputScreen) outputScreen.classList.remove('output-screen--visible');
+      window.scrollTo(0, 0);
+    };
+
+    startBtn.addEventListener('click', showApp);
+
+    // Logo click returns to intro / start page
+    if (logo) {
+      logo.style.cursor = 'pointer';
+      logo.addEventListener('click', showIntro);
+    }
   },
 
   saveState() {

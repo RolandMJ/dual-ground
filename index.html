@@ -259,75 +259,75 @@
         <span>We recommend completing the learning modules and builders above first. This section builds on those concepts and takes them into the terminal.</span>
       </div>
 
-      <div class="sample-guide" id="terminal-cheatsheet">
-        <button class="sample-guide__trigger sample-guide__trigger--terminal" aria-label="View terminal and Claude Code command reference">&#9776; Command Cheat Sheet</button>
-        <div class="sample-guide__popover-backdrop"></div>
-        <div class="sample-guide__popover sample-guide__popover--scrollable sample-guide__popover--wide">
-
-          <div class="sample-guide__popover-columns">
-            <div>
-              <div class="sample-guide__title">Terminal Basics</div>
-              <div class="sample-guide__content">
-                <div class="cheatsheet-cmd"><code>ls</code><span>List files in the current folder</span></div>
-                <div class="cheatsheet-cmd"><code>cd folder-name</code><span>Move into a folder</span></div>
-                <div class="cheatsheet-cmd"><code>cd ..</code><span>Go back one folder</span></div>
-                <div class="cheatsheet-cmd"><code>mkdir my-project</code><span>Create a new folder</span></div>
-                <div class="cheatsheet-cmd"><code>cat file.txt</code><span>Show a file's contents</span></div>
-                <div class="cheatsheet-cmd"><code>pwd</code><span>Show where you are (current path)</span></div>
-                <div class="cheatsheet-cmd"><code>cp file.txt copy.txt</code><span>Copy a file</span></div>
-                <div class="cheatsheet-cmd"><code>mv old.txt new.txt</code><span>Rename or move a file</span></div>
-                <div class="cheatsheet-cmd"><code>rm file.txt</code><span>Delete a file (careful — no undo)</span></div>
-                <div class="cheatsheet-cmd"><code>clear</code><span>Clear the terminal screen</span></div>
-              </div>
-
-              <div class="sample-guide__title" style="margin-top: var(--space-lg)">Git Essentials</div>
-              <div class="sample-guide__content">
-                <div class="cheatsheet-cmd"><code>git init</code><span>Start tracking a project with git</span></div>
-                <div class="cheatsheet-cmd"><code>git add .</code><span>Stage all changes for commit</span></div>
-                <div class="cheatsheet-cmd"><code>git commit -m "message"</code><span>Save a snapshot with a description</span></div>
-                <div class="cheatsheet-cmd"><code>git status</code><span>See what has changed since last commit</span></div>
-                <div class="cheatsheet-cmd"><code>git log --oneline</code><span>See recent commit history</span></div>
-                <div class="cheatsheet-cmd"><code>git push</code><span>Upload commits to GitHub/remote</span></div>
-                <div class="cheatsheet-cmd"><code>git pull</code><span>Download latest changes from remote</span></div>
-              </div>
-            </div>
-
-            <div>
-              <div class="sample-guide__title">Claude Code Commands</div>
-              <div class="sample-guide__content">
-                <div class="cheatsheet-cmd"><code>claude</code><span>Start an interactive Claude Code session</span></div>
-                <div class="cheatsheet-cmd"><code>claude -p "question"</code><span>Ask a quick question without entering a session</span></div>
-                <div class="cheatsheet-cmd"><code>claude -p "question" --output file.txt</code><span>Save Claude's response to a file</span></div>
-                <div class="cheatsheet-cmd"><code>cat file | claude -p "analyse this"</code><span>Pipe file contents into Claude for analysis</span></div>
-                <div class="cheatsheet-cmd"><code>git diff | claude -p "review"</code><span>Have Claude review your code changes</span></div>
-              </div>
-
-              <div class="sample-guide__title" style="margin-top: var(--space-lg)">Inside a Claude Code Session</div>
-              <div class="sample-guide__content">
-                <div class="cheatsheet-cmd"><code>/init</code><span>Generate a CLAUDE.md for your project</span></div>
-                <div class="cheatsheet-cmd"><code>/help</code><span>Show available slash commands</span></div>
-                <div class="cheatsheet-cmd"><code>/clear</code><span>Clear conversation history</span></div>
-                <div class="cheatsheet-cmd"><code>/cost</code><span>Show token usage and cost for this session</span></div>
-                <div class="cheatsheet-cmd"><code>/compact</code><span>Compress conversation to save context space</span></div>
-                <div class="cheatsheet-cmd"><code>/config</code><span>Open Claude Code settings</span></div>
-              </div>
-
-              <div class="sample-guide__title" style="margin-top: var(--space-lg)">Useful Combos</div>
-              <div class="sample-guide__content">
-                <div class="cheatsheet-cmd"><code>mkdir project && cd project && claude</code><span>Create folder, enter it, start Claude</span></div>
-                <div class="cheatsheet-cmd"><code>claude -p "explain this codebase"</code><span>Quick project overview</span></div>
-                <div class="cheatsheet-cmd"><code>claude -p "find bugs in server.js"</code><span>One-shot bug scan</span></div>
-                <div class="cheatsheet-cmd"><code>npm test | claude -p "fix failing tests"</code><span>Pipe test output into Claude for fixes</span></div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
     </div>
 
     <div class="terminal-section__labels">
-      <div class="terminal-section__label terminal-section__label--hero">Simulator — Press Run to Try</div>
+      <div class="terminal-section__label terminal-section__label--hero">
+        Simulator — Press Run to Try
+        <div class="sample-guide sample-guide--inline" id="terminal-cheatsheet">
+          <button class="sample-guide__trigger sample-guide__trigger--terminal" aria-label="View terminal and Claude Code command reference">&#9776; Command Cheat Sheet</button>
+          <div class="sample-guide__popover-backdrop"></div>
+          <div class="sample-guide__popover sample-guide__popover--scrollable sample-guide__popover--wide">
+            <div class="sample-guide__popover-columns">
+              <div>
+                <div class="sample-guide__title">Terminal Basics</div>
+                <div class="sample-guide__content">
+                  <div class="cheatsheet-cmd"><code>ls</code><span>List files in the current folder</span></div>
+                  <div class="cheatsheet-cmd"><code>cd folder-name</code><span>Move into a folder</span></div>
+                  <div class="cheatsheet-cmd"><code>cd ..</code><span>Go back one folder</span></div>
+                  <div class="cheatsheet-cmd"><code>mkdir my-project</code><span>Create a new folder</span></div>
+                  <div class="cheatsheet-cmd"><code>cat file.txt</code><span>Show a file's contents</span></div>
+                  <div class="cheatsheet-cmd"><code>pwd</code><span>Show where you are (current path)</span></div>
+                  <div class="cheatsheet-cmd"><code>cp file.txt copy.txt</code><span>Copy a file</span></div>
+                  <div class="cheatsheet-cmd"><code>mv old.txt new.txt</code><span>Rename or move a file</span></div>
+                  <div class="cheatsheet-cmd"><code>rm file.txt</code><span>Delete a file (careful — no undo)</span></div>
+                  <div class="cheatsheet-cmd"><code>clear</code><span>Clear the terminal screen</span></div>
+                </div>
+
+                <div class="sample-guide__title" style="margin-top: var(--space-lg)">Git Essentials</div>
+                <div class="sample-guide__content">
+                  <div class="cheatsheet-cmd"><code>git init</code><span>Start tracking a project with git</span></div>
+                  <div class="cheatsheet-cmd"><code>git add .</code><span>Stage all changes for commit</span></div>
+                  <div class="cheatsheet-cmd"><code>git commit -m "message"</code><span>Save a snapshot with a description</span></div>
+                  <div class="cheatsheet-cmd"><code>git status</code><span>See what has changed since last commit</span></div>
+                  <div class="cheatsheet-cmd"><code>git log --oneline</code><span>See recent commit history</span></div>
+                  <div class="cheatsheet-cmd"><code>git push</code><span>Upload commits to GitHub/remote</span></div>
+                  <div class="cheatsheet-cmd"><code>git pull</code><span>Download latest changes from remote</span></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="sample-guide__title">Claude Code Commands</div>
+                <div class="sample-guide__content">
+                  <div class="cheatsheet-cmd"><code>claude</code><span>Start an interactive Claude Code session</span></div>
+                  <div class="cheatsheet-cmd"><code>claude -p "question"</code><span>Ask a quick question without starting a session</span></div>
+                  <div class="cheatsheet-cmd"><code>claude -p "q" --output file.txt</code><span>Save Claude's answer to a file</span></div>
+                  <div class="cheatsheet-cmd"><code>cat file | claude -p "analyse this"</code><span>Pipe file contents into Claude</span></div>
+                  <div class="cheatsheet-cmd"><code>git diff | claude -p "review"</code><span>Have Claude review your code changes</span></div>
+                </div>
+
+                <div class="sample-guide__title" style="margin-top: var(--space-lg)">Inside a Claude Code Session</div>
+                <div class="sample-guide__content">
+                  <div class="cheatsheet-cmd"><code>/init</code><span>Generate a CLAUDE.md for your project</span></div>
+                  <div class="cheatsheet-cmd"><code>/help</code><span>Show available slash commands</span></div>
+                  <div class="cheatsheet-cmd"><code>/clear</code><span>Clear conversation history</span></div>
+                  <div class="cheatsheet-cmd"><code>/cost</code><span>Show token usage and cost for this session</span></div>
+                  <div class="cheatsheet-cmd"><code>/compact</code><span>Compress conversation to save context space</span></div>
+                  <div class="cheatsheet-cmd"><code>/config</code><span>Open Claude Code settings</span></div>
+                </div>
+
+                <div class="sample-guide__title" style="margin-top: var(--space-lg)">Useful Combos</div>
+                <div class="sample-guide__content">
+                  <div class="cheatsheet-cmd"><code>mkdir project && cd project && claude</code><span>Create folder, enter it, start Claude</span></div>
+                  <div class="cheatsheet-cmd"><code>claude -p "explain this codebase"</code><span>Quick project overview</span></div>
+                  <div class="cheatsheet-cmd"><code>claude -p "find bugs in server.js"</code><span>One-shot bug scan</span></div>
+                  <div class="cheatsheet-cmd"><code>npm test | claude -p "fix failing tests"</code><span>Pipe test output for Claude to fix</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="terminal-section__label terminal-section__label--guide">Real Project — Copy to Your Terminal</div>
     </div>
 

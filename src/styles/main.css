@@ -2639,11 +2639,21 @@ label,
   letter-spacing: 0.1em;
   padding-bottom: var(--space-xs);
   border-bottom: 2px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
 }
 
 .terminal-section__label--hero {
   color: #28c840;
   border-bottom-color: rgba(40, 200, 64, 0.25);
+}
+
+/* Inline sample-guide inside labels */
+.sample-guide--inline {
+  margin-left: auto;
+  text-transform: none;
+  letter-spacing: normal;
 }
 
 .terminal-section__label--guide {

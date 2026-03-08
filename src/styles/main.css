@@ -2030,6 +2030,13 @@ label,
   line-height: 1.5;
 }
 
+.intro__visitors {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  opacity: 0.5;
+  margin-top: var(--space-sm);
+}
+
 /* Hidden states for intro flow */
 .topbar--hidden {
   display: none !important;

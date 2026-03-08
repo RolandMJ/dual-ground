@@ -72,6 +72,7 @@
       <button class="intro__cta" id="intro-start-btn">Start Building</button>
       <p class="intro__time">Takes about 45 minutes. Works in any browser.</p>
       <p class="intro__disclaimer">Independent educational project built for the AI Vibe Coding Hackathon 2026. Not affiliated with or endorsed by Anthropic.</p>
+      <p class="intro__visitors" id="visitor-counter-intro"></p>
 
     </div>
   </section>
@@ -434,8 +435,12 @@
     fetch('https://api.counterapi.dev/v1/dual-ground-rolandmj/visits/up')
       .then(r => r.json())
       .then(data => {
-        const el = document.getElementById('visitor-counter');
-        if (el && data.count) el.textContent = 'Visitors: ' + data.count;
+        if (!data.count) return;
+        const txt = 'Visitors: ' + data.count;
+        const el1 = document.getElementById('visitor-counter');
+        const el2 = document.getElementById('visitor-counter-intro');
+        if (el1) el1.textContent = txt;
+        if (el2) el2.textContent = txt;
       })
       .catch(() => {});
   </script>

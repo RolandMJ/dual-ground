@@ -1,18 +1,18 @@
 // Prompt block builder logic
 const PromptForge = {
   BLOCK_TYPES: [
-    { id: 'role', label: 'Role', color: '#4d9de0' },
-    { id: 'context', label: 'Context', color: '#b8a078' },
-    { id: 'task', label: 'Task', color: '#e8913a' },
-    { id: 'constraint', label: 'Constraint', color: '#e05555' },
-    { id: 'example', label: 'Example', color: '#45b877' },
-    { id: 'prefill', label: 'Prefill', color: '#38c9c9' },
-    { id: 'think', label: 'Think', color: '#9b6dd7' },
-    { id: 'format', label: 'Format', color: '#e0c445' },
-    { id: 'chain', label: 'Chain', color: '#6678d0' },
-    { id: 'tool', label: 'Tool', color: '#38bdd8' },
-    { id: 'memory', label: 'Memory', color: '#6b9fc4' },
-    { id: 'safety', label: 'Safety', color: '#e07088' }
+    { id: 'role', label: 'Role', color: '#5a9bd5' },
+    { id: 'context', label: 'Context', color: '#bda882' },
+    { id: 'task', label: 'Task', color: '#d9944e' },
+    { id: 'constraint', label: 'Constraint', color: '#d46060' },
+    { id: 'example', label: 'Example', color: '#52b57e' },
+    { id: 'prefill', label: 'Prefill', color: '#48bfbf' },
+    { id: 'think', label: 'Think', color: '#9878c8' },
+    { id: 'format', label: 'Format', color: '#d4bc52' },
+    { id: 'chain', label: 'Chain', color: '#7080c8' },
+    { id: 'tool', label: 'Tool', color: '#4ab5c8' },
+    { id: 'memory', label: 'Memory', color: '#78a4be' },
+    { id: 'safety', label: 'Safety', color: '#d4788e' }
   ],
 
   blocks: [],
@@ -78,6 +78,7 @@ const PromptForge = {
     this.renderBlock(block);
     this.updatePreview();
     App.state.promptBlocks = this.blocks;
+    App.saveState();
   },
 
   renderBlock(block) {
@@ -102,6 +103,7 @@ const PromptForge = {
       this.autoResize(e.target);
       this.updatePreview();
       App.state.promptBlocks = this.blocks;
+    App.saveState();
     });
 
     card.querySelector('.block-card__delete').addEventListener('click', () => {
@@ -109,6 +111,7 @@ const PromptForge = {
       card.remove();
       this.updatePreview();
       App.state.promptBlocks = this.blocks;
+    App.saveState();
     });
 
     // Drag events
@@ -156,6 +159,7 @@ const PromptForge = {
     this.blocks.forEach(b => this.renderBlock(b));
     this.updatePreview();
     App.state.promptBlocks = this.blocks;
+    App.saveState();
   },
 
   autoResize(textarea) {

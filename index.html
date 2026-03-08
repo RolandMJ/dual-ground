@@ -14,11 +14,72 @@
 </head>
 <body>
 
+  <!-- Intro / Landing Screen -->
+  <section class="intro" id="intro-screen">
+    <div class="intro__inner">
+
+      <div class="intro__logo">Dual Ground</div>
+      <p class="intro__tagline">Two paths. One session. Real output.</p>
+
+      <p class="intro__description">Learn how AI actually works — and build something real while you do it. No account needed. Everything you create is yours to keep.</p>
+
+      <div class="intro__cards">
+
+        <div class="intro__card">
+          <div class="intro__card-icon intro__card-icon--learn">
+            <span>&#9998;</span>
+          </div>
+          <h3 class="intro__card-title">Learn</h3>
+          <p class="intro__card-text">Ten modules take you from beginner to advanced — how Claude works, how to prompt it well, and how to use Claude Code in the terminal. No jargon, just what you need.</p>
+        </div>
+
+        <div class="intro__card">
+          <div class="intro__card-icon intro__card-icon--build">
+            <span>&#9881;</span>
+          </div>
+          <h3 class="intro__card-title">Build</h3>
+          <p class="intro__card-text">Assemble a working prompt and a personal SKILL.md file using colour-coded blocks. Practice Claude Code commands in an interactive terminal simulator.</p>
+        </div>
+
+        <div class="intro__card">
+          <div class="intro__card-icon intro__card-icon--discover">
+            <span>&#9733;</span>
+          </div>
+          <h3 class="intro__card-title">Discover</h3>
+          <p class="intro__card-text">Find out your AI personality type based on how you build. Get a personalised playbook to improve your prompting.</p>
+        </div>
+
+      </div>
+
+      <div class="intro__outputs">
+        <div class="intro__output-label">You leave with three things:</div>
+        <div class="intro__output-items">
+          <div class="intro__output-item">
+            <span class="intro__output-dot" style="background: var(--accent-cool)"></span>
+            A ready-to-use prompt
+          </div>
+          <div class="intro__output-item">
+            <span class="intro__output-dot" style="background: var(--skill-block-1)"></span>
+            A reusable SKILL.md file
+          </div>
+          <div class="intro__output-item">
+            <span class="intro__output-dot" style="background: var(--block-think)"></span>
+            Your AI personality card
+          </div>
+        </div>
+      </div>
+
+      <button class="intro__cta" id="intro-start-btn">Start Building</button>
+      <p class="intro__time">Takes about 45 minutes. Works in any browser.</p>
+
+    </div>
+  </section>
+
   <!-- Top Bar -->
-  <header class="topbar">
+  <header class="topbar topbar--hidden" id="topbar">
     <div class="topbar__logo">Dual Ground</div>
     <div class="topbar__center">
-      <div class="topbar__progress">Module 1 of 6</div>
+      <div class="topbar__progress">Module 1 of 10</div>
       <div class="progress-dots">
         <div class="progress-dot progress-dot--active" data-module="1"></div>
         <div class="progress-dot" data-module="2"></div>
@@ -26,13 +87,18 @@
         <div class="progress-dot" data-module="4"></div>
         <div class="progress-dot" data-module="5"></div>
         <div class="progress-dot" data-module="6"></div>
+        <div class="progress-dot" data-module="7"></div>
+        <div class="progress-dot" data-module="8"></div>
+        <div class="progress-dot" data-module="9"></div>
+        <div class="progress-dot" data-module="10"></div>
       </div>
     </div>
+    <button class="topbar__terminal-link" onclick="document.getElementById('terminal-section').scrollIntoView({behavior:'smooth'})">Terminal Playground &#8595;</button>
     <button class="topbar__finish" disabled>Finish &amp; Reveal</button>
   </header>
 
   <!-- Main Split Layout -->
-  <main class="app">
+  <main class="app app--hidden">
 
     <!-- Left Panel: Learn -->
     <section class="panel panel--learn" aria-label="Learn">
@@ -73,7 +139,38 @@
 
       <!-- Prompt Blocks Zone -->
       <div class="build-zone">
-        <h2 class="build-zone__header"><span class="build-zone__icon build-zone__icon--prompt"></span> Prompt Blocks</h2>
+        <div class="build-zone__header-row">
+          <h2 class="build-zone__header"><span class="build-zone__icon build-zone__icon--prompt"></span> Prompt Blocks</h2>
+          <p class="build-zone__hint">New block types unlock as you complete modules and quizzes on the left.</p>
+          <div class="sample-guide" id="prompt-sample-guide">
+            <button class="sample-guide__trigger" aria-label="View sample prompt structure">&#9776; View Sample</button>
+            <div class="sample-guide__popover-backdrop"></div>
+            <div class="sample-guide__popover sample-guide__popover--scrollable">
+              <div class="sample-guide__popover-columns">
+                <div>
+                  <div class="sample-guide__title">Sample Prompt Structure</div>
+                  <div class="sample-guide__content">
+                    <div class="sample-guide__block" style="--sg-color: var(--block-role)"><span class="sample-guide__label">Role</span> You are a senior Python developer who writes clean, well-documented code.</div>
+                    <div class="sample-guide__block" style="--sg-color: var(--block-context)"><span class="sample-guide__label">Context</span> I'm building a REST API for a task management app using FastAPI.</div>
+                    <div class="sample-guide__block" style="--sg-color: var(--block-task)"><span class="sample-guide__label">Task</span> Write an endpoint that creates a new task with title, description, and due date.</div>
+                    <div class="sample-guide__block" style="--sg-color: var(--block-constraint)"><span class="sample-guide__label">Constraint</span> Use Pydantic models for validation. Return 422 for invalid dates.</div>
+                    <div class="sample-guide__block" style="--sg-color: var(--block-format)"><span class="sample-guide__label">Format</span> Return the code with brief inline comments explaining each section.</div>
+                  </div>
+                </div>
+                <div>
+                  <div class="sample-guide__title">Real-World Example: Email Writer Prompt</div>
+                  <div class="sample-guide__example">
+                    <div class="sample-guide__block" style="--sg-color: var(--block-role)"><span class="sample-guide__label">Role</span> You are a professional communications assistant who writes concise, friendly business emails.</div>
+                    <div class="sample-guide__block" style="--sg-color: var(--block-context)"><span class="sample-guide__label">Context</span> I'm a project manager at a small design agency. I need to email a client about a one-week delay on their website redesign.</div>
+                    <div class="sample-guide__block" style="--sg-color: var(--block-task)"><span class="sample-guide__label">Task</span> Write a short email that explains the delay honestly, reassures the client, and proposes a new delivery date of next Friday.</div>
+                    <div class="sample-guide__block" style="--sg-color: var(--block-constraint)"><span class="sample-guide__label">Constraint</span> Keep it under 150 words. No jargon. Don't be overly apologetic — be straightforward and professional.</div>
+                    <div class="sample-guide__block" style="--sg-color: var(--block-example)"><span class="sample-guide__label">Example</span> Subject: Quick update on your redesign timeline<br>Hi Sarah, I wanted to give you a heads-up that...</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div class="add-buttons-row" id="prompt-add-buttons"></div>
 
@@ -95,7 +192,38 @@
 
       <!-- Skill Blocks Zone -->
       <div class="build-zone">
-        <h2 class="build-zone__header"><span class="build-zone__icon build-zone__icon--skill"></span> Skill Blocks</h2>
+        <div class="build-zone__header-row">
+          <h2 class="build-zone__header"><span class="build-zone__icon build-zone__icon--skill"></span> Skill Blocks</h2>
+          <p class="build-zone__hint">New block types unlock as you complete modules and quizzes on the left.</p>
+          <div class="sample-guide" id="skill-sample-guide">
+            <button class="sample-guide__trigger sample-guide__trigger--skill" aria-label="View sample SKILL.md structure">&#9776; View Sample</button>
+            <div class="sample-guide__popover-backdrop"></div>
+            <div class="sample-guide__popover sample-guide__popover--scrollable">
+              <div class="sample-guide__popover-columns">
+                <div>
+                  <div class="sample-guide__title">Sample SKILL.md Structure</div>
+                  <div class="sample-guide__content">
+                    <div class="sample-guide__block" style="--sg-color: var(--skill-block-1)"><span class="sample-guide__label">Name</span> code-reviewer</div>
+                    <div class="sample-guide__block" style="--sg-color: var(--skill-block-2)"><span class="sample-guide__label">Description</span> Reviews code for bugs, security issues, and readability improvements.</div>
+                    <div class="sample-guide__block" style="--sg-color: var(--skill-block-3)"><span class="sample-guide__label">Trigger</span> When the user asks for a code review or shares a code snippet for feedback.</div>
+                    <div class="sample-guide__block" style="--sg-color: var(--skill-block-4)"><span class="sample-guide__label">Steps</span> 1. Check for bugs and logic errors. 2. Flag security concerns. 3. Suggest readability improvements. 4. Summarise findings.</div>
+                    <div class="sample-guide__block" style="--sg-color: var(--skill-block-5)"><span class="sample-guide__label">Notes</span> Be specific about line numbers. If code is fine, say so briefly rather than inventing issues.</div>
+                  </div>
+                </div>
+                <div>
+                  <div class="sample-guide__title">Real-World Example: Meeting Notes Skill</div>
+                  <div class="sample-guide__example">
+                    <div class="sample-guide__block" style="--sg-color: var(--skill-block-1)"><span class="sample-guide__label">Name</span> meeting-notes</div>
+                    <div class="sample-guide__block" style="--sg-color: var(--skill-block-2)"><span class="sample-guide__label">Description</span> Turns rough meeting transcripts or bullet points into clean, organised meeting notes with action items.</div>
+                    <div class="sample-guide__block" style="--sg-color: var(--skill-block-3)"><span class="sample-guide__label">Trigger</span> When the user shares meeting notes, a transcript, or says "clean up these notes."</div>
+                    <div class="sample-guide__block" style="--sg-color: var(--skill-block-4)"><span class="sample-guide__label">Steps</span> 1. Identify the meeting topic and attendees if mentioned. 2. Organise points into clear sections. 3. Extract action items with owners. 4. Add a one-line summary at the top.</div>
+                    <div class="sample-guide__block" style="--sg-color: var(--skill-block-5)"><span class="sample-guide__label">Notes</span> Keep the original meaning — don't add information that wasn't discussed. If something is unclear, flag it with [unclear] rather than guessing.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div class="add-buttons-row" id="skill-add-buttons"></div>
 
@@ -118,6 +246,33 @@
     </section>
 
   </main>
+
+  <!-- Terminal Hero Game + Guided Project -->
+  <div class="terminal-section" id="terminal-section">
+
+    <div class="terminal-intro">
+      <div class="terminal-intro__badge">Bonus: Terminal Playground</div>
+      <h2 class="terminal-intro__title">Learn Claude Code — Without Leaving This Page</h2>
+      <p class="terminal-intro__description">This section is your hands-on introduction to working with Claude Code in the terminal. No installation needed. On the <strong>left</strong>, practice real commands step by step. On the <strong>right</strong>, follow a guided project where you tell Claude to build a game for you — one prompt at a time. The <strong>result window</strong> below shows what your game looks like as it comes together.</p>
+      <div class="terminal-intro__note">
+        <span class="terminal-intro__note-icon">*</span>
+        <span>We recommend completing the learning modules and builders above first. This section builds on those concepts and takes them into the terminal.</span>
+      </div>
+    </div>
+
+    <div class="terminal-section__labels">
+      <div class="terminal-section__label terminal-section__label--hero">Practice Commands</div>
+      <div class="terminal-section__label terminal-section__label--guide">Build a Game — Step by Step</div>
+    </div>
+
+    <div class="terminal-section__columns">
+      <section class="terminal-hero" id="terminal-game"></section>
+      <section class="terminal-guide-wrap" id="terminal-guide"></section>
+    </div>
+
+    <div class="terminal-section__preview-label">Live Result Preview</div>
+    <section class="terminal-preview-wrap" id="terminal-preview"></section>
+  </div>
 
   <!-- Output Screen (hidden by default) -->
   <section class="output-screen" id="output-screen">
@@ -170,6 +325,18 @@
 
   </section>
 
+  <!-- Floating Review Learnings Button -->
+  <div class="review-guide" id="review-guide">
+    <button class="review-guide__trigger" aria-label="Review correct answers">&#10003; Learnings</button>
+    <div class="review-guide__popover" id="review-guide-popover">
+      <div class="review-guide__title">Key Learnings — This Module</div>
+      <div class="review-guide__content" id="review-guide-content">
+        <p class="review-guide__empty">Answer quiz questions to build your review notes here.</p>
+      </div>
+      <div class="review-guide__hint">These are your confirmed learnings from answered questions.</div>
+    </div>
+  </div>
+
   <!-- Scripts -->
   <script src="src/data/modules.js"></script>
   <script src="src/data/archetypes.js"></script>
@@ -178,6 +345,8 @@
   <script src="src/js/promptForge.js"></script>
   <script src="src/js/skillForge.js"></script>
   <script src="src/js/output.js"></script>
+  <script src="src/js/terminalGame.js"></script>
+  <script src="src/js/terminalGuide.js"></script>
   <script src="src/js/app.js"></script>
 
 </body>

@@ -24,12 +24,20 @@ const Output = {
     this.screen.classList.add('output-screen--visible');
     document.querySelector('.app').classList.add('app--hidden');
     document.querySelector('.topbar__finish').style.display = 'none';
+    const reviewEl = document.getElementById('review-guide');
+    if (reviewEl) reviewEl.style.display = 'none';
+    const terminalEl = document.getElementById('terminal-section');
+    if (terminalEl) terminalEl.style.display = 'none';
   },
 
   hide() {
     this.screen.classList.remove('output-screen--visible');
     document.querySelector('.app').classList.remove('app--hidden');
     document.querySelector('.topbar__finish').style.display = '';
+    const reviewEl = document.getElementById('review-guide');
+    if (reviewEl) reviewEl.style.display = '';
+    const terminalEl = document.getElementById('terminal-section');
+    if (terminalEl) terminalEl.style.display = '';
   },
 
   render() {
@@ -158,12 +166,15 @@ const Output = {
 
   flashButton(id, message) {
     const btn = document.getElementById(id);
+    if (btn.dataset.flashing) return;
+    btn.dataset.flashing = '1';
     const original = btn.textContent;
     btn.textContent = message;
     btn.classList.add('btn--flash');
     setTimeout(() => {
       btn.textContent = original;
       btn.classList.remove('btn--flash');
+      delete btn.dataset.flashing;
     }, 1200);
   },
 

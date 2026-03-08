@@ -2,7 +2,7 @@
 
 **Two paths. One session. Real output.**
 
-Dual Ground is a split-screen web app that teaches AI prompting through two parallel interactive builders. The left side walks you through six focused modules about how Claude works. The right side lets you build a working prompt and a personal SKILL.md file in real time. You finish one session with three exportable outputs.
+Dual Ground is a split-screen web app that teaches AI prompting through two parallel interactive builders. The left side walks you through ten modules — from AI fundamentals to advanced Claude Code workflows. The right side lets you build a working prompt and a personal SKILL.md file in real time. You finish one session with three exportable outputs.
 
 ## What You Get
 
@@ -12,12 +12,12 @@ Dual Ground is a split-screen web app that teaches AI prompting through two para
 
 ## How It Works
 
-- Work through 6 modules on the left panel. Each covers a real prompting concept grounded in Anthropic's documentation.
+- Work through 10 modules on the left panel — beginner to advanced, covering prompting, Claude.ai, and Claude Code.
 - Answer 3 quiz questions per module. Completing a quiz unlocks the corresponding block types on the right panel.
 - Build your prompt and SKILL.md using the block builders. Live preview updates as you type.
 - Click **Finish & Reveal** when all modules are done to see your three outputs.
 
-The whole thing takes 30-45 minutes.
+The whole thing takes about 45 minutes.
 
 ## Run Locally
 
@@ -45,12 +45,21 @@ Then open `http://localhost:8000` (or whatever port your server uses).
 
 ## Curriculum Modules
 
+**Foundations (Beginner)**
 1. What Claude Actually Is
 2. Roles and Context
 3. Tasks and Constraints
 4. Examples and Formatting
-5. Thinking and Chaining
-6. Tools, Memory, and Safety
+
+**Power Techniques (Intermediate)**
+5. Thinking and Reasoning
+6. Tools and Real-World Capabilities
+7. Working with Claude.ai
+
+**Claude Code (Advanced)**
+8. Getting Started with Claude Code
+9. Claude Code Workflows
+10. Building Your Own System
 
 All content is cross-checked against [Anthropic's public documentation](https://docs.anthropic.com).
 

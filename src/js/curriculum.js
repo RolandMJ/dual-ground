@@ -52,9 +52,16 @@ const Curriculum = {
     this.renderCallout(mod);
     this.renderQuiz(mod);
     this.renderExtras(mod);
+    this.updateReviewGuide(mod);
 
     // Scroll to top of panel
     document.querySelector('.panel--learn').scrollTop = 0;
+
+    // Apply scroll reveals after render
+    this.applyScrollReveals();
+
+    // Persist current module
+    App.saveState();
   },
 
   renderTitle(mod) {
@@ -67,7 +74,19 @@ const Curriculum = {
       this.contentEl.innerHTML = '<p class="module-content__placeholder">Content coming soon.</p>';
       return;
     }
-    this.contentEl.innerHTML = mod.content.map(p => `<p>${p}</p>`).join('');
+    this.contentEl.innerHTML = mod.content.map((p, idx) => {
+      let processed = p;
+      if (mod.keyTerms) {
+        mod.keyTerms.forEach(term => {
+          const escaped = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+          processed = processed.replace(
+            new RegExp(`(${escaped})`, 'gi'),
+            '<span class="key-term">$1</span>'
+          );
+        });
+      }
+      return `<p style="animation-delay: ${idx * 0.08}s">${processed}</p>`;
+    }).join('');
   },
 
   renderCallout(mod) {
@@ -109,7 +128,8 @@ const Curriculum = {
           else if (optIdx === selectedOption) classes += ' quiz-option--wrong';
           classes += ' quiz-option--disabled';
         }
-        return `<button class="${classes}" data-question="${idx}" data-option="${optIdx}" ${isAnswered ? 'disabled' : ''}>${opt}</button>`;
+        const letter = String.fromCharCode(65 + optIdx);
+        return `<button class="${classes}" data-question="${idx}" data-option="${optIdx}" ${isAnswered ? 'disabled' : ''}><span class="quiz-option__letter">${letter}</span>${opt}</button>`;
       }).join('');
 
       let feedbackHtml = '';
@@ -178,6 +198,12 @@ const Curriculum = {
 
     // Re-render quiz to show feedback
     this.renderQuiz(mod);
+
+    // Update review learnings popover
+    this.updateReviewGuide(mod);
+
+    // Persist state
+    App.saveState();
   },
 
   updateProgressDots(activeId) {
@@ -203,6 +229,66 @@ const Curriculum = {
     }
   },
 
+  updateReviewGuide(mod) {
+    const container = document.getElementById('review-guide-content');
+    if (!container) return;
+
+    const state = this.quizState[mod.id];
+    if (!state) {
+      container.innerHTML = '<p class="review-guide__empty">Answer quiz questions to build your review notes here.</p>';
+      return;
+    }
+
+    // Collect all answered questions — show the correct explanation regardless of user's answer
+    const learnings = [];
+    mod.quiz.forEach((q, idx) => {
+      if (state.answered[idx] !== undefined) {
+        learnings.push({
+          number: idx + 1,
+          text: q.explanationCorrect,
+          wasCorrect: state.correct[idx]
+        });
+      }
+    });
+
+    if (!learnings.length) {
+      container.innerHTML = '<p class="review-guide__empty">Answer quiz questions to build your review notes here.</p>';
+      return;
+    }
+
+    container.innerHTML = learnings.map(l => {
+      const statusClass = l.wasCorrect ? 'review-guide__item--correct' : 'review-guide__item--missed';
+      const statusLabel = l.wasCorrect ? 'You got this right' : 'Good to know';
+      return `<div class="review-guide__item ${statusClass}">
+        <div class="review-guide__item-number">Learning ${l.number} <span class="review-guide__item-status">${statusLabel}</span></div>
+        <div class="review-guide__item-text">${l.text}</div>
+      </div>`;
+    }).join('');
+  },
+
+  initScrollReveals() {
+    const panel = document.querySelector('.panel--learn');
+    if (!panel || this._scrollObserver) return;
+
+    this._scrollObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('reveal--visible');
+          this._scrollObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, root: panel });
+  },
+
+  applyScrollReveals() {
+    if (!this._scrollObserver) this.initScrollReveals();
+    document.querySelectorAll('.skills-callout, .quiz-area, .extras-section').forEach(el => {
+      el.classList.remove('reveal--visible');
+      el.classList.add('reveal-on-scroll');
+      this._scrollObserver.observe(el);
+    });
+  },
+
   renderExtras(mod) {
     const links = (mod.extras && mod.extras.links) || [];
     const visuals = (mod.extras && mod.extras.visuals) || [];
@@ -221,7 +307,10 @@ const Curriculum = {
     ).join('');
 
     const visualsHtml = visuals.map(v =>
-      `<div class="extras-visual">${v}</div>`
+      `<div class="extras-visual">
+        <span class="extras-visual__icon">&#9679;</span>
+        <span class="extras-visual__text">${v}</span>
+      </div>`
     ).join('');
 
     this.extrasEl.innerHTML = `

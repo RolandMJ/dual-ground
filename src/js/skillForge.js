@@ -1,11 +1,11 @@
 // SKILL.md block builder logic
 const SkillForge = {
   BLOCK_TYPES: [
-    { id: 'name', label: 'Name', color: '#d4a54a' },
-    { id: 'description', label: 'Description', color: '#c49840' },
-    { id: 'trigger', label: 'Trigger', color: '#e0b85a' },
-    { id: 'steps', label: 'Steps', color: '#b08a3a' },
-    { id: 'notes', label: 'Notes', color: '#ecc96a' }
+    { id: 'name', label: 'Name', color: '#cda454' },
+    { id: 'description', label: 'Description', color: '#c09a4e' },
+    { id: 'trigger', label: 'Trigger', color: '#d6b460' },
+    { id: 'steps', label: 'Steps', color: '#b49048' },
+    { id: 'notes', label: 'Notes', color: '#e0c06a' }
   ],
 
   blocks: [],
@@ -70,6 +70,7 @@ const SkillForge = {
     this.renderBlock(block);
     this.updatePreview();
     App.state.skillBlocks = this.blocks;
+    App.saveState();
   },
 
   renderBlock(block) {
@@ -94,6 +95,7 @@ const SkillForge = {
       this.autoResize(e.target);
       this.updatePreview();
       App.state.skillBlocks = this.blocks;
+    App.saveState();
     });
 
     card.querySelector('.block-card__delete').addEventListener('click', () => {
@@ -101,6 +103,7 @@ const SkillForge = {
       card.remove();
       this.updatePreview();
       App.state.skillBlocks = this.blocks;
+    App.saveState();
     });
 
     // Drag events
@@ -148,6 +151,7 @@ const SkillForge = {
     this.blocks.forEach(b => this.renderBlock(b));
     this.updatePreview();
     App.state.skillBlocks = this.blocks;
+    App.saveState();
   },
 
   autoResize(textarea) {

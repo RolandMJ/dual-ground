@@ -2031,10 +2031,11 @@ label,
 }
 
 .intro__visitors {
-  font-size: 0.7rem;
-  color: var(--text-muted);
-  opacity: 0.5;
-  margin-top: var(--space-sm);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  opacity: 1;
+  margin-top: var(--space-md);
+  letter-spacing: 0.03em;
 }
 
 /* Hidden states for intro flow */
@@ -3397,5 +3398,6 @@ label,
 .site-footer__visitors {
   display: inline-block;
   margin-left: 1em;
-  opacity: 0.8;
+  opacity: 1;
+  color: var(--text-secondary);
 }

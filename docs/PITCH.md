@@ -50,7 +50,7 @@
 ## Key Talking Points (if Q&A)
 
 - **Built with vanilla JS** — no framework, no build step, loads instantly
-- **All curriculum content is cross-checked** against Anthropic's official documentation
+- **All curriculum content is independently written** and cross-checked by the author against Anthropic's publicly available documentation
 - **The SKILL.md format** is the same format Claude Code actually uses for skills
 - **The archetype scoring** is based on actual block usage patterns, not a personality quiz
 - **Designed for one session** — you can complete the whole thing in 30-45 minutes

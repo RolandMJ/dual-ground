@@ -5,10 +5,10 @@
    =========================== */
 
 /* --- CSS Variables --- */
-/* Warm dim theme — Anthropic earth tones
+/* Warm dim theme — earth tones inspired by warm neutrals
    - "Dim mode" (15-25% luminance) for reduced halation and eye fatigue
    - WCAG AA: 4.5:1 body text, 3:1 large text contrast
-   - Anthropic brand palette: pampas #faf9f5, terracotta #d97757, stone grey #b0aea5
+   - Palette: pampas #faf9f5, terracotta #d97757, stone grey #b0aea5
    - Warm charcoal surfaces (brown/olive undertone, zero blue bias)
    - Soft cream text (#E8-F4) instead of pure white to reduce glare */
 :root {
@@ -56,7 +56,7 @@
   --border-medium: #4a4944;
   --border-glow: rgba(217, 119, 87, 0.25);
 
-  /* Accent — Anthropic terracotta #d97757 as warm primary */
+  /* Accent — terracotta #d97757 as warm primary */
   --accent: #d97757;
   --accent-hover: #e08c6e;
   --accent-glow: rgba(217, 119, 87, 0.15);
@@ -2005,6 +2005,17 @@ label,
   color: var(--text-muted);
 }
 
+.intro__disclaimer {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  opacity: 0.6;
+  margin-top: var(--space-lg);
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+
 /* Hidden states for intro flow */
 .topbar--hidden {
   display: none !important;
@@ -3327,4 +3338,41 @@ label,
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
+}
+
+/* ===========================
+   Site Footer / Disclaimer
+   =========================== */
+.site-footer {
+  background: var(--bg-primary);
+  border-top: 1px solid var(--border-light);
+  padding: var(--space-xl) var(--space-xl) var(--space-lg);
+  margin-top: var(--space-xxl);
+}
+
+.site-footer__inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.site-footer__disclaimer {
+  font-size: 0.78rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin-bottom: var(--space-md);
+}
+
+.site-footer__disclaimer strong {
+  color: var(--text-secondary);
+}
+
+.site-footer__disclaimer em {
+  font-style: italic;
+}
+
+.site-footer__meta {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  opacity: 0.7;
 }

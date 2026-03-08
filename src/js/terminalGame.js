@@ -25,8 +25,8 @@ const TerminalGame = {
       accept: ['claude', 'claude code', 'start claude', 'start claude code'],
       output: [
         { text: '', delay: 0 },
-        { text: '  Claude Code v1.0.32', type: 'info', delay: 300 },
-        { text: '  Model: claude-sonnet-4-6', type: 'info', delay: 150 },
+        { text: '  Claude Code (simulated demo)', type: 'info', delay: 300 },
+        { text: '  Model: (simulated)', type: 'info', delay: 150 },
         { text: '', delay: 100 },
         { text: '  Authenticated as you@example.com', type: 'success', delay: 400 },
         { text: '  Project: ~/my-project (3 files)', type: 'muted', delay: 200 },

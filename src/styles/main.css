@@ -2031,11 +2031,15 @@ label,
 }
 
 .intro__visitors {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  opacity: 1;
   margin-top: var(--space-md);
-  letter-spacing: 0.03em;
+  text-align: center;
+}
+
+.intro__visitors-badge,
+.footer__visitors-badge {
+  height: 1.2em;
+  vertical-align: middle;
+  border-radius: 3px;
 }
 
 /* Hidden states for intro flow */

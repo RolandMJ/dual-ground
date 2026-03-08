@@ -22,7 +22,7 @@ const TerminalGame = {
       brief: 'Open your terminal in any project folder and start Claude Code.',
       hint: 'Just type the command name to launch it.',
       command: 'claude',
-      accept: ['claude'],
+      accept: ['claude', 'claude code', 'start claude', 'start claude code'],
       output: [
         { text: '', delay: 0 },
         { text: '  Claude Code v1.0.32', type: 'info', delay: 300 },
@@ -42,7 +42,7 @@ const TerminalGame = {
       brief: 'Use the -p flag to ask Claude a question without entering interactive mode.',
       hint: 'claude -p followed by your question in quotes.',
       command: 'claude -p "what does this project do?"',
-      accept: ['claude -p "what does this project do?"', "claude -p 'what does this project do?'", 'claude -p "what does this project do"'],
+      accept: ['claude -p "what does this project do?"', "claude -p 'what does this project do?'", 'claude -p "what does this project do"', 'claude -p what does this project do', 'claude -p "what does this project do?"'],
       output: [
         { text: '', delay: 0 },
         { text: '  Scanning project files...', type: 'muted', delay: 600 },
@@ -501,9 +501,13 @@ const TerminalGame = {
     if (!input) return;
     const value = input.value.trim().toLowerCase();
 
-    // Check if command matches (exact or user typed the full accepted form)
+    // Normalize: collapse whitespace, strip leading $ or >
+    const norm = value.replace(/^[$>]\s*/, '').replace(/\s+/g, ' ').trim();
+
+    // Check if command matches any accepted form
     const accepted = challenge.accept.some(a => {
-      return value === a.toLowerCase();
+      const aNorm = a.toLowerCase().replace(/\s+/g, ' ').trim();
+      return norm === aNorm;
     });
 
     if (!accepted && value.length > 0) {
@@ -523,8 +527,12 @@ const TerminalGame = {
     const output = document.getElementById('tg-output');
     const line = document.createElement('div');
     line.className = 'tg-terminal__line tg-terminal__line--error';
-    line.textContent = `  Command not recognized for this challenge. Try: ${challenge.command}`;
+    line.textContent = `  Not quite — for this challenge, type: ${challenge.command}`;
     output.appendChild(line);
+    const hint = document.createElement('div');
+    hint.className = 'tg-terminal__line tg-terminal__line--muted';
+    hint.textContent = '  Or click "Type it for me" below to have it entered automatically.';
+    output.appendChild(hint);
     output.scrollTop = output.scrollHeight;
   },
 

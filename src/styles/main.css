@@ -767,9 +767,11 @@ label,
 }
 
 .sample-guide__popover--wide {
-  width: min(96vw, 1140px);
-  padding-left: var(--space-lg);
-  padding-right: var(--space-lg);
+  width: 96vw;
+  max-width: 1400px;
+  padding-left: var(--space-md);
+  padding-right: var(--space-md);
+  overflow-x: hidden;
 }
 
 /* Cheat sheet command rows */
@@ -789,17 +791,19 @@ label,
 
 .cheatsheet-cmd code {
   font-family: 'Source Code Pro', monospace;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--text-bright);
   background: rgba(0, 0, 0, 0.25);
   padding: 2px 7px;
   border-radius: var(--radius-sm);
-  white-space: nowrap;
-  min-width: 0;
+  white-space: normal;
+  word-break: break-all;
 }
 
 .cheatsheet-cmd span {
   color: var(--text-secondary);
+  flex: 1;
+  min-width: 0;
 }
 
 .sample-guide__popover {
@@ -878,6 +882,13 @@ label,
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-lg);
+  overflow: hidden;
+  min-width: 0;
+}
+
+.sample-guide__popover-columns > div {
+  min-width: 0;
+  overflow: hidden;
 }
 
 .sample-guide__divider {

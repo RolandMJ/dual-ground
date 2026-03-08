@@ -423,6 +423,19 @@ Major overhaul session covering multiple areas:
 
 **Other:** Logo now links back to start page. Cache-bust query strings on all script/CSS tags. 90-second pitch script written for screen recording. Duplicate CSS rule removed.
 
-**Issues:** Browser caching on GitHub Pages caused the intro fix to not take effect immediately. Solved with cache-bust query strings (?v=3) on all asset references.
+**Issues:** Browser caching on GitHub Pages caused the intro fix to not take effect immediately. Solved with cache-bust query strings on all asset references.
 **Workaround / Solution:** All fixes applied directly.
+**Next:** Screen recording of pitch video
+
+---
+
+## 2026-03-08 — Fix Command Cheat Sheet clipping
+
+**Stage:** Post-build polish
+**Status:** completed
+
+The Command Cheat Sheet modal was clipping text on the right column — code blocks with `white-space: nowrap` pushed content beyond the popover boundary. Fixed by: widening popover to 96vw / 1400px max, allowing code blocks to wrap (`white-space: normal`), adding `overflow: hidden` and `min-width: 0` to grid columns to prevent blowout. Cache-bust bumped to v4.
+
+**Issues:** `white-space: nowrap` on code elements inside a CSS grid with `1fr 1fr` columns causes the grid to overflow its container — the `nowrap` prevents the content from fitting within the column's computed width.
+**Workaround / Solution:** Changed to `white-space: normal` with `word-break: break-all` as fallback. Long commands may wrap mid-word but all content is now visible.
 **Next:** Screen recording of pitch video

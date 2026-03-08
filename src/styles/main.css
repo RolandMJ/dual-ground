@@ -33,15 +33,15 @@
   --skill-block-4: #b49048;
   --skill-block-5: #e0c06a;
 
-  /* Warm dim surfaces — charcoal with brown/olive undertone
-     16-25% luminance range for comfortable extended reading */
-  --bg-primary: #1f1f1e;
-  --bg-panel-left: #272724;
-  --bg-panel-right: #2c2c28;
-  --bg-topbar: #242321;
-  --bg-elevated: #363532;
-  --bg-card: #302f2b;
-  --bg-hover: #3d3c38;
+  /* Soft dark surfaces — charcoal with brown/olive undertone
+     22-28% luminance range for inviting, comfortable reading */
+  --bg-primary: #2a2a27;
+  --bg-panel-left: #32322e;
+  --bg-panel-right: #373733;
+  --bg-topbar: #2e2e2b;
+  --bg-elevated: #41403b;
+  --bg-card: #3b3a35;
+  --bg-hover: #4a4943;
 
   /* Text — warm soft whites, no pure white (reduces halation)
      Uses Claude's Pampas #F4F3EE as bright instead of #FFF */
@@ -52,8 +52,8 @@
   --text-bright: #faf9f5;
 
   /* Borders — warm stone, clearly visible */
-  --border-light: #3e3d38;
-  --border-medium: #4a4944;
+  --border-light: #4a4943;
+  --border-medium: #56554f;
   --border-glow: rgba(217, 119, 87, 0.25);
 
   /* Accent — terracotta #d97757 as warm primary */
@@ -68,9 +68,9 @@
   --warn: #d9944e;
 
   /* Terminal surfaces — slightly cooler than main theme for "terminal" feel */
-  --bg-terminal: #1a1a1a;
-  --bg-terminal-bar: #222220;
-  --border-terminal: #383836;
+  --bg-terminal: #232322;
+  --bg-terminal-bar: #2b2b28;
+  --border-terminal: #43423d;
   --text-terminal: #dbd9d4;
 
   /* Spacing scale */

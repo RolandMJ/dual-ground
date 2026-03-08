@@ -282,4 +282,12 @@ const App = {
   }
 };
 
-document.addEventListener('DOMContentLoaded', () => App.init());
+// Force page to load from the top — prevent browser scroll restoration
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  window.scrollTo(0, 0);
+  App.init();
+});

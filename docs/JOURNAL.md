@@ -395,3 +395,34 @@ Pivoted the entire surface palette from cold purple-tinted dark (#1c1b21, ~9% lu
 **Issues:** None.
 **Workaround / Solution:** Direct CSS variable updates in :root.
 **Next:** Commit all changes, test in browser
+
+---
+
+## 2026-03-08 — Post-Build: Terminal Hero UX Overhaul + Cheat Sheet + Legal + Bug Fixes
+
+**Stage:** Post-build polish (Pass 4)
+**Status:** completed
+
+Major overhaul session covering multiple areas:
+
+**Terminal Hero UX redesign:** Commands are now pre-filled in the terminal input so users just press Run — no more guessing what to type. Added a "Command to try" banner above each challenge. Removed the "Type it for me" button (redundant with pre-fill). Renamed buttons to "Run Command" and "Why this command?" for clarity. Error messages now re-fill the correct command instead of just scolding.
+
+**Terminal section clarity:** Added clear "Simulator" vs "Real Project" labels. Guide now explicitly says prompts are for a real terminal, not the simulator. Intro text rewritten to distinguish the two sides in one sentence.
+
+**Command Cheat Sheet:** Added a green "Command Cheat Sheet" button next to Terminal Hero, matching the View Sample button pattern. Opens a two-column modal with Terminal Basics (10 commands), Git Essentials (7 commands), Claude Code Commands (5 commands), Session Slash Commands (6 commands), and Useful Combos (4 command chains). All explained in plain English for non-technical users. Widened to 1140px to prevent content clipping.
+
+**Legal disclaimers:** Added footer disclaimer: independent, non-profit, AI Vibe Coding Hackathon 2026, not affiliated with Anthropic. Added intro screen disclaimer. Changed simulated terminal output from fabricated version/model IDs to "(simulated demo)". Removed "Anthropic" from CSS comments. Fixed PITCH.md to say "independently written by the author." Copyright assigned to Roland MJ Preisach.
+
+**Theme brightness:** Lifted background luminance twice: first from 12-17% to 22-28%, then to 30-36% ("warm cafe lighting"). Still a dark theme but much more inviting for presentations.
+
+**Functional bug fixes (4 bugs):**
+1. Page not loading from top on reload — added scrollTo(0,0) at three stages plus hidden sections by default in HTML
+2. Quiz clicks on letter labels silently failing — used button element instead of e.target
+3. Drag reorder wiping visible textarea content — now restores block.content after re-render
+4. Intro screen never showing on reload — removed auto-skip logic, intro always shows first
+
+**Other:** Logo now links back to start page. Cache-bust query strings on all script/CSS tags. 90-second pitch script written for screen recording. Duplicate CSS rule removed.
+
+**Issues:** Browser caching on GitHub Pages caused the intro fix to not take effect immediately. Solved with cache-bust query strings (?v=3) on all asset references.
+**Workaround / Solution:** All fixes applied directly.
+**Next:** Screen recording of pitch video

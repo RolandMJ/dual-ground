@@ -767,7 +767,9 @@ label,
 }
 
 .sample-guide__popover--wide {
-  width: min(95vw, 1020px);
+  width: min(96vw, 1140px);
+  padding-left: var(--space-lg);
+  padding-right: var(--space-lg);
 }
 
 /* Cheat sheet command rows */
@@ -793,7 +795,7 @@ label,
   padding: 2px 7px;
   border-radius: var(--radius-sm);
   white-space: nowrap;
-  flex-shrink: 0;
+  min-width: 0;
 }
 
 .cheatsheet-cmd span {

@@ -33,27 +33,27 @@
   --skill-block-4: #b49048;
   --skill-block-5: #e0c06a;
 
-  /* Soft dark surfaces — charcoal with brown/olive undertone
-     22-28% luminance range for inviting, comfortable reading */
-  --bg-primary: #2a2a27;
-  --bg-panel-left: #32322e;
-  --bg-panel-right: #373733;
-  --bg-topbar: #2e2e2b;
-  --bg-elevated: #41403b;
-  --bg-card: #3b3a35;
-  --bg-hover: #4a4943;
+  /* Warm medium-dark surfaces — charcoal with brown/olive undertone
+     30-36% luminance range — warm cafe lighting, presentation-friendly */
+  --bg-primary: #363430;
+  --bg-panel-left: #3d3b36;
+  --bg-panel-right: #42403b;
+  --bg-topbar: #393734;
+  --bg-elevated: #4d4b45;
+  --bg-card: #474540;
+  --bg-hover: #56544e;
 
   /* Text — warm soft whites, no pure white (reduces halation)
      Uses Claude's Pampas #F4F3EE as bright instead of #FFF */
-  --text-primary: #e8e6dc;
-  --text-secondary: #b0aea5;
-  --text-inverse: #e8e6dc;
-  --text-muted: #aaa69f;
+  --text-primary: #ece9df;
+  --text-secondary: #b8b5ab;
+  --text-inverse: #ece9df;
+  --text-muted: #a8a49d;
   --text-bright: #faf9f5;
 
   /* Borders — warm stone, clearly visible */
-  --border-light: #4a4943;
-  --border-medium: #56554f;
+  --border-light: #56544e;
+  --border-medium: #625f58;
   --border-glow: rgba(217, 119, 87, 0.25);
 
   /* Accent — terracotta #d97757 as warm primary */
@@ -68,9 +68,9 @@
   --warn: #d9944e;
 
   /* Terminal surfaces — slightly cooler than main theme for "terminal" feel */
-  --bg-terminal: #232322;
-  --bg-terminal-bar: #2b2b28;
-  --border-terminal: #43423d;
+  --bg-terminal: #2e2d2a;
+  --bg-terminal-bar: #363430;
+  --border-terminal: #4e4c47;
   --text-terminal: #dbd9d4;
 
   /* Spacing scale */

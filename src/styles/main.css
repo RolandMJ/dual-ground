@@ -3386,3 +3386,9 @@ label,
   color: var(--text-muted);
   opacity: 0.7;
 }
+
+.site-footer__visitors {
+  display: inline-block;
+  margin-left: 1em;
+  opacity: 0.8;
+}

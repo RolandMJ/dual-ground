@@ -436,6 +436,6 @@ Major overhaul session covering multiple areas:
 
 The Command Cheat Sheet modal was clipping text on the right column — code blocks with `white-space: nowrap` pushed content beyond the popover boundary. Fixed by: widening popover to 96vw / 1400px max, allowing code blocks to wrap (`white-space: normal`), adding `overflow: hidden` and `min-width: 0` to grid columns to prevent blowout. Cache-bust bumped to v4.
 
-**Issues:** `white-space: nowrap` on code elements inside a CSS grid with `1fr 1fr` columns causes the grid to overflow its container — the `nowrap` prevents the content from fitting within the column's computed width.
-**Workaround / Solution:** Changed to `white-space: normal` with `word-break: break-all` as fallback. Long commands may wrap mid-word but all content is now visible.
+**Issues:** The `--wide` modifier was defined BEFORE the base `.sample-guide__popover` rule in the CSS file. Same specificity meant the base rule (720px) always won, making the wide width (96vw/1400px) completely inert. This is why every previous "fix" had no visible effect.
+**Workaround / Solution:** Moved `--wide` rule after the base rule and doubled the class selector (`.sample-guide__popover.sample-guide__popover--wide`) for higher specificity so it always wins regardless of source order. Cache-bust bumped to v5.
 **Next:** Screen recording of pitch video

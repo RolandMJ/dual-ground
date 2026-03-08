@@ -766,14 +766,6 @@ label,
   box-shadow: 0 2px 14px rgba(40, 200, 64, 0.25);
 }
 
-.sample-guide__popover--wide {
-  width: 96vw;
-  max-width: 1400px;
-  padding-left: var(--space-md);
-  padding-right: var(--space-md);
-  overflow-x: hidden;
-}
-
 /* Cheat sheet command rows */
 .cheatsheet-cmd {
   display: flex;
@@ -842,6 +834,15 @@ label,
 
 .sample-guide--open .sample-guide__popover {
   display: block;
+}
+
+/* Wide variant for cheat sheet — MUST come after base .sample-guide__popover */
+.sample-guide__popover.sample-guide__popover--wide {
+  width: 96vw;
+  max-width: 1400px;
+  padding-left: var(--space-md);
+  padding-right: var(--space-md);
+  overflow-x: hidden;
 }
 
 .sample-guide__title {
